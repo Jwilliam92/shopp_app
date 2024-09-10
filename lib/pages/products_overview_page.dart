@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopp_app/components/product_item.dart';
-import 'package:shopp_app/data/dummy_data.dart';
+
 import 'package:shopp_app/models/product.dart';
+import 'package:shopp_app/models/product_list.dart';
 
 class ProductsOverviewPage extends StatelessWidget {
-  final List<Product> loadedProducts = dummyProducts;
-  ProductsOverviewPage({super.key});
+
+  const ProductsOverviewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+  final provider = Provider.of<ProductList>(context);
+  final List<Product> loadedProducts = provider.items;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
@@ -29,8 +33,10 @@ class ProductsOverviewPage extends StatelessWidget {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           ),
-        itemBuilder: (context, index) => ProductItem(product: loadedProducts[index]),
-        )
-    );
+        itemBuilder: (context, index) => ChangeNotifierProvider.value(
+          value: loadedProducts[index],      
+        child: const ProductItem(),
+        ),        
+      ));
   }
-}
+} 

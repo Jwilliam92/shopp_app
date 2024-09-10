@@ -13,7 +13,7 @@ class ProductDetailPage extends StatelessWidget {
         backgroundColor: Colors.deepOrange,
         title: Center(
           child: Text(product.title,
-          style:  TextStyle(
+          style:  const TextStyle(
             color: Colors.white,
           ),
           ),
