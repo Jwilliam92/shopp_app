@@ -12,7 +12,7 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         title: Center(
-          child: Text(product.title,
+          child: Text(product.name,
           style:  const TextStyle(
             color: Colors.white,
           ),

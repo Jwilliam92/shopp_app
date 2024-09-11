@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopp_app/models/cart.dart';
 import 'package:shopp_app/models/product_list.dart';
+import 'package:shopp_app/pages/cart_page.dart';
 import 'package:shopp_app/pages/product_detail_page.dart';
 import 'package:shopp_app/pages/products_overview_page.dart';
 import 'package:shopp_app/utils/app_routes.dart';
@@ -15,12 +17,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ProductList(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductList(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'E-Commerce App',
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            color: Colors.deepOrange,
+          ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent,
           secondary: Colors.deepOrange,
           ),
@@ -30,6 +42,7 @@ class MyApp extends StatelessWidget {
         home: const ProductsOverviewPage(),
         routes: {
           AppRoutes.PRODUCT_DETAIL: (context) => const ProductDetailPage(),
+          AppRoutes.CART: (context) => const CartPage(),
         },
       ),
     );
