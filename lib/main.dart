@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'E-Commerce App',
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             color: Colors.deepOrange,
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent,
