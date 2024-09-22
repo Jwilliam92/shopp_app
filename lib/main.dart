@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopp_app/models/cart.dart';
+import 'package:shopp_app/models/order_list.dart';
 import 'package:shopp_app/models/product_list.dart';
 import 'package:shopp_app/pages/cart_page.dart';
+import 'package:shopp_app/pages/orders_page.dart';
 import 'package:shopp_app/pages/product_detail_page.dart';
 import 'package:shopp_app/pages/products_overview_page.dart';
 import 'package:shopp_app/utils/app_routes.dart';
@@ -25,6 +27,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => OrderList(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -39,10 +44,12 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
           useMaterial3: true,
         ),
-        home: const ProductsOverviewPage(),
+       // home: const ProductsOverviewPage(),
         routes: {
+          AppRoutes.HOME: (context) => const ProductsOverviewPage(),
           AppRoutes.PRODUCT_DETAIL: (context) => const ProductDetailPage(),
           AppRoutes.CART: (context) => const CartPage(),
+          AppRoutes.ORDERS: (context) => const OrdersPage(),
         },
       ),
     );
